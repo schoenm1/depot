@@ -16,7 +16,7 @@ class ProductTest < ActiveSupport::TestCase
    test "product price must be positive" do
      product = Product.new(:title => 'Harry Potter',
                            :description => 'Harry Potter ant the chamber of secrets',
-			   :image_url => 'tcos.jpeg')
+			   :image_url => 'tcos.jpg')
      product.price = -1
      assert product.invalid?
      assert_equal "must be greater than or equal to 0.01",
@@ -40,7 +40,7 @@ class ProductTest < ActiveSupport::TestCase
    end
    
    test "image_url" do
-      ok = %w{ fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg ruedi.jpeg ruedi.JPEG http://a.b.c/x/y/z/fred.gif }
+      ok = %w{ fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg http://a.b.c/x/y/z/fred.gif }
       bad = %w{ fred.doc fred.gif/more fred.gif.more }
   
       ok.each do |name|

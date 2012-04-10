@@ -3,6 +3,12 @@ require 'test_helper'
 class ProductsControllerTest < ActionController::TestCase
   setup do
     @product = products(:one)
+    @update = { 
+      :title => 'Harry Potter',
+      :description => 'Harry Potter and the Chamber of Secrets',
+      :image_url => 'HP_tcos.jpg',
+      :price => '22.45'
+    }
   end
 
   test "should get index" do
@@ -18,7 +24,9 @@ class ProductsControllerTest < ActionController::TestCase
 
   test "should create product" do
     assert_difference('Product.count') do
-      post :create, product: @product.attributes
+     # post :create, product: @product.attributes
+      post :create, :product => @update
+      
     end
 
     assert_redirected_to product_path(assigns(:product))
@@ -33,8 +41,10 @@ class ProductsControllerTest < ActionController::TestCase
     get :edit, id: @product
     assert_response :success
   end
+
   test "should update product" do
-    put :update, id: @product, product: @product.attributes
+    #put :update, id: @product, product: @product.attributes
+    put :update, :id => @product.to_param, :product => @update
     assert_redirected_to product_path(assigns(:product))
   end
 
@@ -45,39 +55,4 @@ class ProductsControllerTest < ActionController::TestCase
 
     assert_redirected_to products_path
   end
-end
-
-
-#updated 27.03.2012 / Micha
-setup do
-@product = products(:one)
-@update = {
-:title => 'Lorem Ipsum',
-:description => 'Wibbles are fun!',
-:image_url => 'lorem.jpg',
-:price => 19.95
-}
-end
-
-# inserted 27.03.2012 / Micha
-test "should get index" do
-get :index
-assert_response :success
-assert_not_nil assigns(:products)
-end
-test "should get new" do
-get :new
-assert_response :success
-end
-test "should create product" do
-assert_difference('Product.count') do
-post :create, :product => @update
-end
-assert_redirected_to product_path(assigns(:product))
-end
-# ...
-test "should update product" do
-put :update, :id => @product.to_param, :product => @update
-assert_redirected_to product_path(assigns(:product))
-end
 end
