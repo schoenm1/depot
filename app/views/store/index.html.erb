@@ -1,0 +1,13 @@
+<% if notice %>
+<%= notice %>
+
+<% end %>
+Your Pragmatic Catalog
+
+<% @products.each do |product| %>
+<%= image_tag(product.image_url) %>
+<%= product.title %>
+
+<%= sanitize(product.description) %>
+<%= product.price %>
+<% end %>
