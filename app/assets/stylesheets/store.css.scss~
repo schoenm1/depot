@@ -1,3 +1,8 @@
+// Place all the styles related to the Store controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
 .store {
   h1 {
     margin: 0;
@@ -30,17 +35,13 @@
       color: #227;
     }
 
-//#START:inline
     p, div.price_line {
       margin-left: 100px;
       margin-top: 0.5em; 
       margin-bottom: 0.8em; 
-
-      form, div {
-        display: inline;
-      }
+form,div {
+display: inline;
     }
-//#END:inline
 
     .price {
       color: #44a;
